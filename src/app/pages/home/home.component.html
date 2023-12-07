@@ -2,30 +2,22 @@
 
 <div class="container_articles">
   <div class="articles_main">
-    <app-big-card
-      Id="1"
-      photoCover="https://www.morecap.com.br/assets/images/SM-placeholder.png"
-      cardTitle= "Title Test"
-      cardDescription= "Description Test"
-    ></app-big-card>
+    <ng-container *ngFor="let card of cards" >
+      <app-big-card *ngIf="card.main"
+        Id={{card.id}}
+        photoCover={{card.photo}}
+        cardTitle={{card.title}}
+        cardDescription={{card.description}}
+      ></app-big-card>
+    </ng-container>
   </div>
   <div class="articles_others">
-    <app-small-card
-      Id="2"
-      cardTitle="Teste small card 1"
-      photoCover="https://www.morecap.com.br/assets/images/SM-placeholder.png"
-    ></app-small-card>
-
-    <app-small-card
-      Id="3"
-      cardTitle="Teste small card 2"
-      photoCover="https://www.morecap.com.br/assets/images/SM-placeholder.png"
-    ></app-small-card>
-
-    <app-small-card
-      Id="4"
-      cardTitle="Teste small card 3"
-      photoCover="https://www.morecap.com.br/assets/images/SM-placeholder.png"
-    ></app-small-card>
+    <ng-container *ngFor="let card of cards" >
+      <app-small-card *ngIf="!card.main"
+        Id={{card.id}}
+        cardTitle={{card.title}}
+        photoCover={{card.photo}}
+      ></app-small-card>
+    </ng-container>
   </div>
 </div>
